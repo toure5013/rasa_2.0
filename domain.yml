@@ -1,0 +1,81 @@
+version: "2.0"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - username
+  - register
+
+actions:
+ - utter_greet
+ - utter_thanks
+ - utter_bye
+ - utter_affirm
+ - utter_deny
+ - utter_iamabot
+ - validate_register_form
+ - action_submitregister
+
+
+entities : 
+  - nom_personne_entity
+
+
+slots : 
+  nom_personne:
+    type: text
+    influence_conversation: false
+  registeremail:
+    type: text
+    influence_conversation: false
+
+
+forms : 
+  getusername_form:
+    nom_personne:
+    - type: from_text
+  register_form:
+    registeremail:
+    - type: from_text 
+  
+
+responses:
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+  utter_ask_name:
+  - text: "What's your name ?"
+  - text : "Can I have your name?"
+
+  utter_nice_meet:
+  - text: "Nice to meet you ---- {nom_personne} ----!"
+  
+  utter_ask_registeremail:
+  - text: "Please give me your email"
+  - text: "Can I have your email ?"
+  - text: "Give me your email please"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
